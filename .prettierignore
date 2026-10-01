@@ -1,0 +1,10 @@
+node_modules
+.next
+.research
+.verification
+package-lock.json
+artifacts
+cache
+deployments
+evidence
+*.sol

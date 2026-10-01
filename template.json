@@ -1,0 +1,46 @@
+{
+  "name": "poolpledge",
+  "description": "Factory-verified SaucerSwap V1 HTS liquidity locks with public verification",
+  "version": "0.1.0",
+  "create-scaffold-hbar": {
+    "capabilities": {
+      "frontend": [
+        "nextjs-app"
+      ],
+      "solidityFramework": [
+        "hardhat"
+      ],
+      "packageManager": [
+        "npm"
+      ]
+    },
+    "defaults": {
+      "frontend": "nextjs-app",
+      "solidityFramework": "hardhat",
+      "packageManager": "npm"
+    },
+    "requirements": {
+      "node": "^22.13.0 || ^24.0.0"
+    },
+    "outro": {
+      "sections": [
+        {
+          "title": "Start PoolPledge",
+          "steps": [
+            {
+              "command": "{run:dev}",
+              "text": "Browse at http://localhost:3000. No key is required for read-only use."
+            },
+            {
+              "command": "{run:test}",
+              "text": "Run local escrow and integration-boundary tests."
+            },
+            {
+              "text": "See README.md for testnet deployment, LP acquisition, and evidence collection."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

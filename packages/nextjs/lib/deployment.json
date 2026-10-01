@@ -1,0 +1,9 @@
+{
+  "chainId": 296,
+  "address": "0xdad7601722A26f3B3418F7a473F4714A189EE682",
+  "factory": "0x00000000000000000000000000000000000026e7",
+  "deploymentTransaction": "0x31d4d8e074242772189b4b44d18d4ef97fbb4226d8fe99d3c48a29ddd19962f7",
+  "verifiedLockId": "0",
+  "verifiedAt": "2026-09-30",
+  "source": "Increment 1 testnet receipts"
+}

@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-09-29T13:57:30.083Z",
+  "source": "live Hedera testnet reads",
+  "deploymentSource": "https://docs.saucerswap.finance/developers/contracts",
+  "pool": {
+    "pair": "0xfE7CC3cEb7b1128bfC3889184E2d5561BF74bfb3",
+    "factory": "0x00000000000000000000000000000000000026e7",
+    "token0": "0x0000000000000000000000000000000000003aD2",
+    "token1": "0x0000000000000000000000000000000000120f46",
+    "lpToken": "0x000000000000000000000000000000000028887f",
+    "lpTokenId": "0.0.2656383",
+    "decimals": 8,
+    "reserve0": "7663387867913",
+    "reserve1": "4222896622883",
+    "totalSupply": "5511100474203",
+    "hasLiquidity": true,
+    "observedAt": "2026-09-29T13:57:26.811Z",
+    "network": "testnet"
+  },
+  "nativeToken": {
+    "token_id": "0.0.2656383",
+    "type": "FUNGIBLE_COMMON",
+    "deleted": false,
+    "decimals": "8"
+  },
+  "acquisitionQuote": {
+    "inputTinybars": "10000000",
+    "outputSauceBaseUnits": "5493944",
+    "executed": false
+  },
+  "mirrorUrl": "https://testnet.mirrornode.hedera.com/api/v1/tokens/0.0.2656383",
+  "transactionProof": false
+}

@@ -1,0 +1,54 @@
+{
+  "name": "poolpledge",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": "^22.13.0 || ^24.0.0"
+  },
+  "workspaces": [
+    "packages/core",
+    "packages/hardhat",
+    "packages/nextjs"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @poolpledge/nextjs",
+    "start": "npm run start -w @poolpledge/nextjs",
+    "build": "npm run hardhat:compile && npm run build -w @poolpledge/nextjs",
+    "lint": "eslint packages scripts && npm run typecheck -w @poolpledge/nextjs",
+    "test": "npm run test -w @poolpledge/core && npm run hardhat:test && npm run test -w @poolpledge/nextjs",
+    "format": "prettier --write . --ignore-path .prettierignore",
+    "hardhat:compile": "npm run compile -w @poolpledge/hardhat",
+    "hardhat:test": "npm run test -w @poolpledge/hardhat",
+    "hardhat:deploy": "npm run deploy -w @poolpledge/hardhat",
+    "testnet:proof": "npm run proof -w @poolpledge/hardhat",
+    "testnet:acquire-lp": "npm run acquire -w @poolpledge/hardhat",
+    "testnet:account": "npm run account -w @poolpledge/hardhat",
+    "testnet:withdraw": "npm run withdraw -w @poolpledge/hardhat",
+    "integration:check": "node scripts/check-integration.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "eligibility:local": "node scripts/eligibility.mjs",
+    "next:dev": "npm run dev",
+    "next:start": "npm start",
+    "next:build": "npm run build -w @poolpledge/nextjs",
+    "typecheck": "npm run typecheck -w @poolpledge/nextjs",
+    "secrets:check": "node scripts/secrets-check.mjs"
+  },
+  "devDependencies": {
+    "dotenv": "17.4.2",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.7",
+    "prettier": "3.9.9",
+    "typescript": "5.9.3",
+    "@types/node": "22.20.4"
+  },
+  "overrides": {
+    "adm-zip": "0.6.1",
+    "undici": "6.28.1",
+    "tmp": "0.2.7",
+    "serialize-javascript": "7.0.5",
+    "diff": "8.0.3",
+    "cookie": "0.7.2",
+    "uuid": "11.1.1"
+  }
+}

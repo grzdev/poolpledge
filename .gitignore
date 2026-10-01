@@ -1,0 +1,17 @@
+node_modules/
+.next/
+artifacts/
+cache/
+coverage/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.research/
+.verification/
+deployments/
+evidence/*.local.json
+*.log
+.DS_Store
