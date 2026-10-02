@@ -1,4 +1,8 @@
-# Verification ledger — Increment 3
+# Verification ledger
+
+**Current result:** see [Increment 4](INCREMENT-4.md) for dependency remediation, publication, real external-scaffold validation and CI. The sections below are the retained Increment 3 historical record, not current blockers.
+
+## Increment 3 historical record
 
 Updated October 1, 2026. Results below distinguish local preparation from public-template eligibility. No testnet transactions were sent in Increment 3.
 

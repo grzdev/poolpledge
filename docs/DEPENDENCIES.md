@@ -15,7 +15,7 @@ After remediation: **0 high, 0 moderate, 0 critical; 9 low package entries**. Pr
 
 ## Remaining low finding
 
-One underlying advisory in `elliptic@6.6.1` propagates through seven ethers v5 packages / Hardhat / hardhat-ethers, producing nine low entries. Path: hardhat → @ethersproject/abi → hash → abstract-signer → abstract-provider → transactions → signing-key → elliptic. The advisory describes incorrect ECDSA signatures and possible key exposure under specific conditions; low severity does not mean harmless. No patched elliptic release is listed. npm proposes Hardhat 3.18.1 and hardhat-ethers 4.2.0, both breaking upgrades requiring a separate migration.
+One underlying advisory in `elliptic@6.6.1` propagates through six ethers v5 packages, Hardhat and hardhat-ethers, producing nine low entries including elliptic itself. Path: hardhat → @ethersproject/abi → hash → abstract-signer → abstract-provider → transactions → signing-key → elliptic. The advisory describes incorrect ECDSA signatures and possible key exposure under specific conditions; low severity does not mean harmless. No patched elliptic release is listed. npm proposes Hardhat 3.18.1 and hardhat-ethers 4.2.0, both breaking upgrades requiring a separate migration.
 
 PoolPledge's explicit CLI signing uses ethers 6.17.0 (noble curves), and browser signing is delegated to the external wallet. The affected ethers v5 dependency remains in installed development tooling; this is not proof every possible tooling path is unreachable. Keep this testnet-only, avoid introducing ethers v5 signing, and migrate tooling deliberately before production use. No mainnet safety claim is made.
 
