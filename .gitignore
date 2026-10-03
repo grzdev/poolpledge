@@ -18,3 +18,6 @@ CLAUDE.md
 screenshots/
 *.log
 .DS_Store
+
+video-build/
+poolpledge-demo.mp4
