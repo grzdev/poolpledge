@@ -34,3 +34,10 @@ export function walletError(error) {
   if (/fetch|network|rate.limit/i.test(text)) return "RPC unavailable or rate-limited. Retry shortly.";
   return text.replace(/https?:\/\/\S+/g, "[RPC endpoint]").replace(/0x[a-fA-F0-9]{64,}/g, "[transaction data]").slice(0, 240);
 }
+
+export function lockActionReasons({ account, chain, busy, stage, loading, error, pool, accountMatches, amount, amountError, approved, date, validation }) {
+  const commonReason = !account ? "Connect your wallet." : chain !== "0x128" ? "Switch to Hedera Testnet (296)." : busy ? (stage === "pending" ? "A transaction is pending. Use Check confirmation before another action." : "Complete the current wallet request first.") : loading ? "Loading factory validation, LP balance and allowance…" : error ? "Pool reads failed. Use Retry in Discover." : !pool ? "Discover a valid pool first." : !accountMatches ? "Pool data belongs to another wallet. Refresh the pool." : pool.balance === null ? "LP balance is unavailable. Refresh the pool." : pool.allowance === null ? "LP allowance is unavailable. Refresh the pool." : !amount ? "Enter an LP amount." : amountError;
+  const approvalReason = commonReason || (approved ? "The exact allowance is already confirmed on-chain. Continue to deposit." : "");
+  const depositReason = commonReason || (!date ? "Choose an unlock date and time, or use Five minutes from now." : validation) || (!approved ? "Approve the exact LP amount first." : "");
+  return { approvalReason, depositReason };
+}

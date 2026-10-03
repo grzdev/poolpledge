@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 const base = process.env.SMOKE_BASE_URL || "http://127.0.0.1:3000";
-for (const path of ["/", "/locks/0", "/test-wallet"]) {
+for (const path of ["/", "/locks/0", "/test-wallet", "/my-locks"]) {
   const response = await fetch(base + path);
   assert.equal(response.status, 200, path);
   assert.match(await response.text(), /PoolPledge/);
   console.log(`PASS ${path}`);
 }
-for (const [path, status] of [["/api/pool?account=invalid", 400], ["/api/pool?pair=invalid", 400], ["/api/locks/invalid", 400], ["/api/locks/999999999999999", 404]]) {
+for (const [path, status] of [["/api/pool?account=invalid", 400], ["/api/pool?pair=invalid", 400], ["/api/locks/invalid", 400], ["/api/locks/999999999999999", 404], ["/api/locks?account=invalid", 400]]) {
   const response = await fetch(base + path);
   assert.equal(response.status, status, path);
   assert.equal(typeof (await response.json()).error, "string");
@@ -30,4 +30,10 @@ const owned = await accountPool.json();
 assert.equal(owned.account.toLowerCase(), l.beneficiary.toLowerCase());
 assert.match(owned.balance, /^\d+$/);
 assert.match(owned.allowance, /^\d+$/);
+const allLocks = await fetch(`${base}/api/locks?account=${encodeURIComponent(l.beneficiary)}`);
+assert.equal(allLocks.status, 200);
+const allL = await allLocks.json();
+assert(Array.isArray(allL.locks));
+assert(typeof allL.scanned === "number");
+console.log(`PASS /api/locks?account=... (read ${allL.locks.length} locks, scanned ${allL.scanned})`);
 console.log("PASS live factory discovery and Increment 1 lock evidence (read-only)");

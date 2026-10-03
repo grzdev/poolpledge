@@ -13,5 +13,8 @@ coverage/
 .verification/
 deployments/
 evidence/*.local.json
+packages/nextjs/AGENTS.md
+CLAUDE.md
+screenshots/
 *.log
 .DS_Store

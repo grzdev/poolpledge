@@ -1,0 +1,51 @@
+{
+  "network": "testnet",
+  "verifiedAt": "2026-10-02T15:12:19.555Z",
+  "verificationMethod": "User manually signed in Chrome MetaMask and supplied native hashes; receipts and state independently checked via public RPC/mirror. Extension UI not directly observed by agent.",
+  "deployment": "0xdad7601722a26f3b3418f7a473f4714a189ee682",
+  "lock": {
+    "id": "1",
+    "depositor": "0x76643E8359F69829CF7a424Eec28B960aE82c804",
+    "beneficiary": "0x76643E8359F69829CF7a424Eec28B960aE82c804",
+    "pair": "0xfE7CC3cEb7b1128bfC3889184E2d5561BF74bfb3",
+    "token": "0x000000000000000000000000000000000028887f",
+    "amount": "71694",
+    "unlockAt": "1790953641",
+    "unlockUtc": "2026-10-02T15:07:21.000Z",
+    "withdrawn": true
+  },
+  "finalState": {
+    "withdrawn": true,
+    "walletLpBaseUnits": "7169477",
+    "escrowLpBaseUnits": "0",
+    "liabilityBaseUnits": "0",
+    "allowanceBaseUnits": "0",
+    "balanceRestored": true
+  },
+  "budgetTinybar": "180000000",
+  "totalFeeTinybar": "80525840",
+  "remainingBudgetTinybar": "99474160",
+  "failedTransactions": [],
+  "transactions": [
+    {
+      "action": "approval",
+      "evmHash": "0xccd8c474bfa7022f1dbb0501906e1f12a4ccfecae8bc2c82a66cc424e67bd62a",
+      "receiptUrl": "https://testnet.mirrornode.hedera.com/api/v1/contracts/results/0.0.7314364-1790952953-564903362",
+      "feeTinybar": "58161600"
+    },
+    {
+      "action": "deposit",
+      "nativeHash": "e29e79f59cfdc5a1a0b7f047f5ae2986b31fb55fe96e3d9ecf74eef3cd5423e34160d24b4926018b9486dffb077d7d88",
+      "evmHash": "0x608c9464b9c4461bd6e6a5a07c648b46c77e22174eeeb5e792a61ee2390af1cd",
+      "receiptUrl": "https://testnet.mirrornode.hedera.com/api/v1/contracts/results/0.0.7314364-1790953364-019973754",
+      "feeTinybar": "17464640"
+    },
+    {
+      "action": "withdrawal",
+      "nativeHash": "661a62263c0927a728aef770231ded666f8aaca15522ef66a957a7f9602c18c0cdf15cf7f8aeb1d6e5cad20530095d69",
+      "evmHash": "0xb33b423d22496c758fa05c8315a1850a2c313ca5a0cdfcbcd94039962f637ad6",
+      "receiptUrl": "https://testnet.mirrornode.hedera.com/api/v1/contracts/results/0.0.7314364-1790953858-461212300",
+      "feeTinybar": "4899600"
+    }
+  ]
+}

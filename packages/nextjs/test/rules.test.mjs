@@ -40,3 +40,20 @@ test("wallet errors distinguish rejected signatures, insufficient gas funds, and
   assert.match(walletError({ code: -32002 }), /already open/);
   assert.doesNotMatch(walletError(new Error("RPC https://example.com/private?key=secret")), /secret/);
 });
+
+test("approval does not require a date; every unavailable prerequisite explains itself", async () => {
+  const { lockActionReasons } = await import("../lib/rules.mjs");
+  const ready = { account: "0xabc", chain: "0x128", busy: false, stage: "idle", loading: false, error: "", pool: { balance: "7169477", allowance: "0" }, accountMatches: true, amount: "0.00071694", amountError: "", approved: false, date: "", validation: "" };
+  assert.equal(lockActionReasons(ready).approvalReason, "");
+  assert.match(lockActionReasons(ready).depositReason, /unlock/);
+  for (const [patch, pattern] of [
+    [{account:""}, /Connect/], [{chain:"0x1"}, /296/],
+    [{busy:true,stage:"pending"}, /pending/], [{busy:true,stage:"signature"}, /wallet request/],
+    [{loading:true}, /Loading/], [{error:"RPC failed"}, /Retry/], [{pool:null}, /Discover/],
+    [{accountMatches:false}, /another wallet/], [{pool:{balance:null,allowance:"0"}}, /balance/],
+    [{pool:{balance:"1",allowance:null}}, /allowance/], [{amount:""}, /amount/],
+    [{amountError:"LP amount exceeds your available balance."}, /exceeds/], [{approved:true}, /already confirmed/]
+  ]) assert.match(lockActionReasons({...ready,...patch}).approvalReason, pattern);
+  assert.match(lockActionReasons({...ready,date,validation:"Choose an unlock time more than one minute ahead."}).depositReason, /minute/);
+  assert.equal(lockActionReasons({...ready,date,approved:true}).depositReason, "");
+});

@@ -75,3 +75,25 @@ npm emitted deprecation notices and noted two dependency install scripts not app
 Before publication, the staged allowlist passed the secret-pattern and excluded-path checks. After publication, scanning the index plus the complete one-commit history passed (140 file versions). No credentials were printed or committed. Any subsequent docs-only update is scanned again before push.
 
 Additional command: npm run integration:check passed with exit 0 at 2026-10-02T08:51:33Z. Canonical WHBAR/SAUCE liquidity remained available; LP 0.0.2656383 was nondeleted with 8 decimals. The acquisition quote was read-only and not executed.
+
+## Browser approval blocker correction — October 2, 2026 (local, not yet published)
+
+The user confirmed connection of account 0.0.10771993 in Chrome/MetaMask, then reported disabled approval. Chrome is not exposed through this session's browser tools, so the exact rendered state could not be inspected. Code inspection reproduced a hidden gate: approval depended on a valid unlock time, and an empty date disabled it without an explanation.
+
+Approval now validates amount/balance independently from the deposit date. Deposit retains future-time validation and fresh on-chain checks before signing. Added a five-minute date shortcut and explicit inline reasons for disconnected/wrong-network wallets, pending/signature state, pool loading/failure/missing data, account mismatch, missing balance/allowance, missing/invalid amount, existing exact approval, and missing/invalid unlock time. Time validation updates while the page is open.
+
+Affected local files: components/pool-workspace.tsx, lib/rules.mjs, lib/rules.d.mts and test/rules.test.mjs in packages/nextjs. These are executable changes after the published/documentation-only comparison, so the prior fresh-scaffold result does not cover this fix. Lint, explicit types, all 6 wallet-rule tests and production build passed. The local production app was restarted on port 3016. Connected Chrome interaction and signed transactions remain pending user confirmation; no transaction submitted, 0 of the new 1.8 HBAR cap spent.
+
+## Completed manual browser cycle — October 2, 2026
+
+The user connected the matching account and manually signed approval, deposit and withdrawal in Chrome/MetaMask. The agent could not directly observe the extension UI. All supplied native hashes were resolved to EVM hashes, successful receipts and independently verified on-chain state. See `evidence/browser-cycle.public.json` for the allowlisted public record (currently local, not yet published).
+
+- Approval: https://hashscan.io/testnet/transaction/0xccd8c474bfa7022f1dbb0501906e1f12a4ccfecae8bc2c82a66cc424e67bd62a — 0.58161600 HBAR.
+- Deposit: https://hashscan.io/testnet/transaction/0x608c9464b9c4461bd6e6a5a07c648b46c77e22174eeeb5e792a61ee2390af1cd — 0.17464640 HBAR.
+- Withdrawal: https://hashscan.io/testnet/transaction/0xb33b423d22496c758fa05c8315a1850a2c313ca5a0cdfcbcd94039962f637ad6 — 0.04899600 HBAR.
+
+Lock #1 held 71,694 LP base units for beneficiary 0x76643e8359f69829cf7a424eec28b960ae82c804 until 2026-10-02 15:07:21 UTC. Withdrawal confirmed after expiry. Wallet LP returned to 7,169,477 base units; withdrawn=true, escrow balance=0, total liability=0, allowance=0. No repeat approval/deposit or new deployment was submitted. The public lock API was readable without wallet authentication. The localhost sharing URL is usable only where that local server is reachable, not a public hosted site.
+
+Total charged fees including all account transaction records in the cycle: **0.80525840 HBAR**. No failed transactions found. Remaining from the newly authorized 1.8 HBAR: **0.99474160 HBAR**. No LP acquisition or funding transfer occurred. This is separate from Increment 1 historical spending.
+
+The local approval-gate fix and this evidence still need publication and affected external-scaffold/CI validation before claiming the published repository includes them. UI polish is deferred to the next increment. No further signing is needed for this cycle.
