@@ -2,7 +2,11 @@
 
 An original MIT Scaffold HBAR template for **factory-verified SaucerSwap V1 liquidity commitments**. Lock a pool's native HTS LP tokens until a fixed time and share an independently readable custody page. Built for launchpads, treasury commitments and grant-funded liquidity; it does not assess token safety or promise returns.
 
-**Testnet only · unaudited.** A real LP acquisition, deposit and mature withdrawal completed on September 30, 2026. See [transaction evidence](docs/TRANSACTIONS.md), [validation status](docs/VERIFICATION.md), [architecture](docs/ARCHITECTURE.md) and [comparison with eight built-in templates](docs/ASSESSMENT.md). The public repository is https://github.com/grzdev/poolpledge; external-template validation is recorded in the ledger. Browser wallet connection and signed browser transactions remain unverified.
+- **Live App**: [poolpledge.netlify.app](https://poolpledge.netlify.app/)
+- **Demo Video**: [Watch Walkthrough (Google Drive)](https://drive.google.com/file/d/16wLY0xAihswOaweHYmw6Cas7FK7nVFCg/view?usp=sharing)
+- **Verified On-Chain Testnet Cycle**: [Lock #1 on HashScan](https://hashscan.io/testnet/transaction/0xb33b423d22496c758fa05c8315a1850a2c313ca5a0cdfcbcd94039962f637ad6)
+
+**Testnet only · unaudited.** Real on-chain cycles verified end-to-end on Hedera testnet (see [transaction evidence](docs/TRANSACTIONS.md), [manual MetaMask cycle evidence](evidence/browser-cycle.public.json), [validation status](docs/VERIFICATION.md), [architecture](docs/ARCHITECTURE.md) and [comparison with eight built-in templates](docs/ASSESSMENT.md)). The public repository is https://github.com/grzdev/poolpledge; external-template validation is recorded in the ledger. Signed browser wallet transactions verified on Hedera testnet.
 
 ## Prerequisites
 
